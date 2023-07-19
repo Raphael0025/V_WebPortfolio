@@ -39,7 +39,6 @@ body{
   font-weight: 900;
 }
 nav{
-  height: 60px;
   background-color: var(--white);
   box-shadow: 0 4px 21px 0 var(--fade10-black);
 }

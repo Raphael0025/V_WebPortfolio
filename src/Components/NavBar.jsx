@@ -13,8 +13,8 @@ function NavBar() {
         }
     };
     return (
-        <nav className='navbar fixed-top navbar-expand-lg '>
-            <div className='container-fluid'>
+        <nav className='navbar fixed-top navbar-expand-md p-0 justify-content-center'>
+            <div className='p-0 m-0 container'>
                 <a className='navbar-brand ' href='#home'><img src={logo} alt='logo' /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
