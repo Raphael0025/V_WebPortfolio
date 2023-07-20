@@ -19,7 +19,6 @@ function CardReview({ id, img, name, review }) {
         const newWidth = expanded ? '850px' : '350px';
         $(componentRef.current).animate({ width: newWidth }, 500);
     };
-
     return (
         <div id={id} ref={componentRef} className={`bg-light rounded-3 slide d-flex flex-column align-items-start text-start p-2 py-4 mx-4 my-2`} style={{ position: expanded ? 'relative' : 'absolute', zIndex: expanded ? 1 : 3, overflow: expanded ? '' : 'hidden' }}>
             <div className='d-flex flex-row gap-3 pb-3'>

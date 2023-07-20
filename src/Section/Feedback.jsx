@@ -12,16 +12,6 @@ import pic4 from '../assets/clients/Erjohn.png'
 import pic5 from '../assets/clients/Jhenell.png'
 
 function Feedback() {
-    const [slideIndex, setSlideIndex] = useState(0);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setSlideIndex(0);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    
     const settings = {
         dots: true, 
         infinite: true,
