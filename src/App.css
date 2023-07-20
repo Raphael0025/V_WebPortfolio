@@ -145,6 +145,29 @@ img{
   object-fit: cover;
   transition: all 0.5s ease-in-out;
 }
+.slide{
+  max-height: 530px;
+  min-height: 530px;
+  box-shadow: 3px 4px 10px 0 var(--fade10-black);
+  transition: width 0.5s ease;
+  z-index: 1;
+}
+.review-text {
+  flex: 1; /* Allow the text to take up remaining space */
+}
+.feed-img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+/* Style for the "See more" button (feel free to customize) */
+.see-more-container button {
+  color: var(--fade50-black);
+  background-color:transparent ;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 @keyframes upDown {
   from{transform: translateY(0px);}to{transform: translateY(-10px);}
 }

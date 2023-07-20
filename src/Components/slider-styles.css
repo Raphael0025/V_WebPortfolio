@@ -1,0 +1,4 @@
+/* Custom styles for the slider arrows */
+.slick-prev:before, .slick-next:before {
+    color: black; /* Replace "red" with your desired arrow color */
+}
