@@ -3,7 +3,7 @@ import pic from '../assets/images/profile pic.jpg'
 
 function Home() {
     return (
-        <div className='d-flex justify-content-center align-items-center h-100 px-5'>
+        <div id='home' className='d-flex justify-content-center align-items-center h-100 px-5'>
             <div className='col-6 text-start ps-5'>
                 <h5>Hello!</h5>
                 <h1 className='fw-bold mt-5'>I'm Jeselle, a Mobile and Web UI/UX Designer specializing in creating engaging digital experiences.</h1>
