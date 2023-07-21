@@ -9,9 +9,9 @@ function Title({title}) {
     const intersectionObserverCallback = (entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                titleRef.current.classList.add('animate__lightSpeedInLeft');
+                titleRef.current.classList.add('animate__lightSpeedInRight');
             } else {
-                titleRef.current.classList.remove('animate__lightSpeedInLeft');
+                titleRef.current.classList.remove('animate__lightSpeedInRight');
             }
         });
     };

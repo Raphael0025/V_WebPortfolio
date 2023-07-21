@@ -19,7 +19,6 @@ function Feedback() {
     const intersectionObserverOptions = {
         threshold: 0.2,
     };
-    
     const intersectionObserverCallback = (entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {

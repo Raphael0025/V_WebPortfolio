@@ -17,7 +17,6 @@ function scrollToSection() {
         section.scrollIntoView({ behavior: 'smooth' });
     }
 }
-
 function Services() {
     const buttons = [
         {
@@ -57,20 +56,23 @@ function Services() {
         threshold: 0.2,
     };
 
-    const intersectionObserverCallback = (entries, observer) => {
+    const intersectionObserverCallback = (entries) => {
         entries.forEach((entry) => {
-          const targetRef = entry.target === leftSiblingRef.current ? rightSiblingRef : leftSiblingRef;
-          if (entry.isIntersecting) {
-            targetRef.current.classList.remove('animate__fadeOutRight');
-            targetRef.current.classList.add('animate__fadeInRight');
-          } else {
-            targetRef.current.classList.remove('animate__fadeInRight');
-            targetRef.current.classList.add('animate__fadeOutRight');
-          }
+            if (entry.isIntersecting) {
+                leftSiblingRef.current.classList.remove('animate__fadeOut');
+                leftSiblingRef.current.classList.add('animate__fadeIn');
+                rightSiblingRef.current.classList.remove('animate__fadeOut');
+                rightSiblingRef.current.classList.add('animate__fadeIn');
+            } else {
+                leftSiblingRef.current.classList.remove('animate__fadeIn');
+                leftSiblingRef.current.classList.add('animate__fadeOut');
+                rightSiblingRef.current.classList.remove('animate__fadeIn');
+                rightSiblingRef.current.classList.add('animate__fadeOut');
+            }
         });
-      };
+    };
     
-      useEffect(() => {
+    useEffect(() => {
         const leftSiblingObserver = new IntersectionObserver(intersectionObserverCallback, intersectionObserverOptions);
         const rightSiblingObserver = new IntersectionObserver(intersectionObserverCallback, intersectionObserverOptions);
     
@@ -78,30 +80,40 @@ function Services() {
         rightSiblingObserver.observe(rightSiblingRef.current);
     
         return () => {
-          leftSiblingObserver.disconnect();
-          rightSiblingObserver.disconnect();
+            leftSiblingObserver.disconnect();
+            rightSiblingObserver.disconnect();
         };
     });
 
     const handleClick = (title) => {
         setActiveButtonTitle((prevTitle) => (prevTitle === title ? 'Web / Mobile Design' : title));
     };
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
 
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     return (
-        <div id='service' className='d-flex flex-column justify-content-center align-items-start p-5 mt-5'>
+        <div id='service' className={`d-flex flex-column justify-content-center align-items-start p-${isSmallScreen ? '4 pt-5' : '5'} mt-5`}>
             <Title title={'My Services'}/>
-            <div className='d-flex justify-content-center align-items-center'>
-                <div ref={leftSiblingRef} className='animate__animated col-5 text-start px-4'>
-                    <h5 className='service-desc mb-5'>{`Please review all of our services listed below, and when you're ready to proceed, click the "Get Started" button.`}</h5>
+            <div className={`d-flex flex-${isSmallScreen ? 'column w-100' : 'row'} justify-content-center align-items-start`}>
+                <div ref={leftSiblingRef} className={`animate__animated col-${isSmallScreen ? '12 px-0' : '5 px-4'} text-start`}>
+                    <h5 className={`service-desc ${isSmallScreen ? 'mb-3' : 'mb-5'}`}>{`Please review all of our services listed below, and when you're ready to proceed, click the "Get Started" button.`}</h5>
+                    {isSmallScreen ? <button className='fs-5 mb-5 gsBtn rounded-3 px-4 py-3 d-flex align-items-center gap-2' onClick={scrollToSection}>Get Started <BiSolidChevronRightCircle size={20} /></button> : ''}
                     {buttons.map((button, index) => (
                         <ServiceButton onClick={() => handleClick(button.title)} key={index} title={button.title} content={button.content} icon={button.icon} isActive={activeButtonTitle === button.title}/>
                     ))}
                 </div>
-                <div ref={rightSiblingRef} className='animate__animated col-7 d-flex flex-column justify-content-center align-items-end gap-5'>
-                    <button className='fs-5 gsBtn rounded-3 px-4 py-3 d-flex align-items-center gap-2' onClick={scrollToSection}>Get Started <BiSolidChevronRightCircle size={20} /> </button>
+                <div ref={rightSiblingRef} className={`animate__animated col-${isSmallScreen ? '12' : '7'} d-flex flex-column justify-content-center align-items-end gap-5`}>
+                    {isSmallScreen ? '' : <button className='fs-5 gsBtn rounded-3 px-4 py-3 d-flex align-items-center gap-2' onClick={scrollToSection}>Get Started <BiSolidChevronRightCircle size={20} /></button>}
                     {buttons.map((button, index) => (
                         activeButtonTitle === button.title && (
-                            <img key={index} className='service-img rounded-3' src={button.image} alt={button.title}/>
+                            <img key={index} className='service-img rounded-3' style={{width: isSmallScreen ? '100%' : '600px', height: '400px'}} src={button.image} alt={button.title}/>
                         )
                     ))}
                 </div>

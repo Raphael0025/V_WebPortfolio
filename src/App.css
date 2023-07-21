@@ -163,12 +163,10 @@ img{
 .activeBtn{
   background-color: var(--darker-gray);
   color: var(--white);
-  transform: scale(1.1);
+  transform: scale(1.05);
   transform-origin: top left;
 }
 .service-img{
-  width: 600px;
-  height: 400px;
   object-fit: cover;
   transition: all 0.5s ease-in-out;
 }
