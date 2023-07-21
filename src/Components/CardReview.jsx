@@ -6,13 +6,13 @@ function CardReview({ id, img, name, review }) {
     const [isTextOverflowing, setIsTextOverflowing] = useState(false);
     const [expanded, setExpanded] = useState(true);
     const componentRef = useRef(null);
-    const [charactersCount, setCharactersCount] = useState(300);
+    const [charactersCount, setCharactersCount] = useState(400);
     
 
     let content = expanded ? review.substring(0, charactersCount) : review
     useEffect(()=>{
         setIsTextOverflowing(review.length > charactersCount)
-    })
+    },[review, charactersCount])
 
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
