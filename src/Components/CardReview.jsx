@@ -6,7 +6,7 @@ function CardReview({ id, img, name, review }) {
     const [isTextOverflowing, setIsTextOverflowing] = useState(false);
     const [expanded, setExpanded] = useState(true);
     const componentRef = useRef(null);
-    const [charactersCount, setCharactersCount] = useState(320);
+    const [charactersCount, setCharactersCount] = useState(350);
     
 
     let content = expanded ? review.substring(0, charactersCount) : review
@@ -30,7 +30,7 @@ function CardReview({ id, img, name, review }) {
         if(isSmallScreen){
             const newWidth = expanded ? '380px' : '380px'
             const newHeight = expanded ? '650px' : '530px'
-            const newFontSize = expanded ? '0.6rem' : '0.8rem'
+            const newFontSize = expanded ? '0.6rem' : '1rem'
             $(componentRef.current).animate({ width: newWidth, minHeight: newHeight, fontSize: newFontSize, }, 500);
         } else {
             const newWidth = expanded ? '850px' : '350px';

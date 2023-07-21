@@ -34,12 +34,10 @@
   --fade0-white: rgba(255, 255, 255, 0);
   --space-font: 'Space Grotesk', sans-serif;
 }
-html{
-  overflow-x: hidden;
-}
 body{
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 #root{
   width: 100%;
@@ -57,6 +55,7 @@ body{
   font-family: var(--space-font);
 }
 nav{
+  position: fixed;
   background-color: var(--white);
   box-shadow: 0 4px 21px 0 var(--fade10-black);
 }
