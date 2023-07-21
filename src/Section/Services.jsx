@@ -91,7 +91,7 @@ function Services() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 576);
+            setIsSmallScreen(window.innerWidth < 500);
         }
         window.addEventListener('resize', handleResize)
         handleResize()

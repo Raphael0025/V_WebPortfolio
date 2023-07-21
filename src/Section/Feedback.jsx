@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Title from '../Components/Title'
 import Slider from 'react-slick';
 import CardReview from '../Components/CardReview'
@@ -15,6 +15,17 @@ import 'animate.css';
 function Feedback() {
     const feedbackTitleRef = useRef(null);
     const feedbackSliderRef = useRef(null);
+
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 500);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
 
     const intersectionObserverOptions = {
         threshold: 0.2,
