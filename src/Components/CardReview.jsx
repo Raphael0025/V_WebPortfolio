@@ -28,7 +28,7 @@ function CardReview({ id, img, name, review }) {
     const toggleExpand = () => {
         setExpanded(!expanded);
         if(isSmallScreen){
-            const newWidth = expanded ? '380px' : '350px'
+            const newWidth = expanded ? '380px' : '380px'
             const newHeight = expanded ? '650px' : '530px'
             const newFontSize = expanded ? '0.6rem' : '0.8rem'
             $(componentRef.current).animate({ width: newWidth, minHeight: newHeight, fontSize: newFontSize, }, 500);
