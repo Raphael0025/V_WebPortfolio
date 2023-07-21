@@ -10,6 +10,13 @@ import service2 from '../assets/images/graphic design.png'
 import service3 from '../assets/images/developing.png'
 import service4 from '../assets/images/video editing.png'
 
+function scrollToSection() {
+    const section = document.getElementById('contact');
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 function Services() {
     const buttons = [
         {
@@ -56,7 +63,7 @@ function Services() {
                     ))}
                 </div>
                 <div className='col-7 d-flex flex-column justify-content-center align-items-end gap-5'>
-                    <button className='fs-5 gsBtn rounded-3 px-4 py-3 d-flex align-items-center gap-2'>Get Started <BiSolidChevronRightCircle size={20} color={'white'} /> </button>
+                    <button className='fs-5 gsBtn rounded-3 px-4 py-3 d-flex align-items-center gap-2' onClick={scrollToSection}>Get Started <BiSolidChevronRightCircle size={20} /> </button>
                     {buttons.map((button, index) => (
                         activeButtonTitle === button.title && (
                             <img key={index} className='service-img rounded-3' src={button.image} alt={button.title}/>

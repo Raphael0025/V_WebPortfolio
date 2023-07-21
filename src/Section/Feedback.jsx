@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react'
+import React from 'react'
 import Title from '../Components/Title'
 import Slider from 'react-slick';
 import CardReview from '../Components/CardReview'
@@ -20,7 +20,6 @@ function Feedback() {
         arrows: true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        beforeChange: (current, next) => setSlideIndex(next),
     };
     const slides = [
         {

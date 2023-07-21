@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-track{
+  background: var(--white);
+}
+::-webkit-scrollbar-thumb{
+  background: var(--star);
+}
+::-webkit-scrollbar-thumb:hover{
+  background: var(--light-gray);
+}
+@media(prefers-reduced-motion: no-preference){
+  *{
+    scroll-behavior:smooth;
+  }
+}
 :root{
   --white: #fff;
   --black: #000;
@@ -41,6 +57,13 @@ body{
 nav{
   background-color: var(--white);
   box-shadow: 0 4px 21px 0 var(--fade10-black);
+}
+.nav-item{
+  transition: all 0.3s ease-in-out;
+}
+.nav-item:hover{
+  text-decoration: line-through;
+  transform: scale(1.2);
 }
 img{
   width: 64px;
@@ -132,8 +155,11 @@ img{
 }
 .gsBtn:hover{
   animation: upDown 0.5s infinite alternate;
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--fade50-black)
 }
-.active{
+.activeBtn{
   background-color: var(--darker-gray);
   color: var(--white);
   transform: scale(1.1);
@@ -167,6 +193,11 @@ img{
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+}
+.foot{
+  color: var(--white);
+  height: 4rem;
+  background-color: var(--fade63-black);
 }
 @keyframes upDown {
   from{transform: translateY(0px);}to{transform: translateY(-10px);}
