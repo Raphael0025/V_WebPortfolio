@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react';
 import Title from '../Components/Title'
 import Slider from 'react-slick';
 import CardReview from '../Components/CardReview'
@@ -10,8 +10,50 @@ import pic2 from '../assets/clients/Rona pic.png'
 import pic3 from '../assets/clients/David pic.png'
 import pic4 from '../assets/clients/Erjohn.png'
 import pic5 from '../assets/clients/Jhenell.png'
+import 'animate.css';
 
 function Feedback() {
+    const feedbackTitleRef = useRef(null);
+    const feedbackSliderRef = useRef(null);
+
+    const intersectionObserverOptions = {
+        threshold: 0.2,
+    };
+    
+    const intersectionObserverCallback = (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                if (entry.target === feedbackTitleRef.current) {
+                    feedbackTitleRef.current.classList.remove('animate__fadeOut');
+                    feedbackTitleRef.current.classList.add('animate__lightSpeedInRight');
+                } else {
+                    feedbackSliderRef.current.classList.remove('animate__fadeOut');
+                    feedbackSliderRef.current.classList.add('animate__fadeIn');
+                }
+            } else {
+                if (entry.target === feedbackTitleRef.current) {
+                    feedbackTitleRef.current.classList.remove('animate__lightSpeedInRight');
+                    feedbackTitleRef.current.classList.add('animate__fadeOut');
+                } else {
+                    feedbackSliderRef.current.classList.remove('animate__fadeIn');
+                    feedbackSliderRef.current.classList.add('animate__fadeOut');
+                }
+            }
+        });
+    };
+    
+    useEffect(() => {
+        const feedbackTitleObserver = new IntersectionObserver(intersectionObserverCallback, intersectionObserverOptions);
+        feedbackTitleObserver.observe(feedbackTitleRef.current);
+        const feedbackSliderObserver = new IntersectionObserver(intersectionObserverCallback, intersectionObserverOptions);
+        feedbackSliderObserver.observe(feedbackSliderRef.current);
+    
+        return () => {
+            feedbackTitleObserver.disconnect();
+            feedbackSliderObserver.disconnect();
+        };
+    });
+
     const settings = {
         dots: true, 
         infinite: true,
@@ -56,8 +98,8 @@ function Feedback() {
     return (
         <div id='feedback' className='d-flex flex-column align-items-start justify-content-center p-5 mt-5'>
             <Title title={'Feedback'}/>
-            <h5 className='mb-5 ps-4 service-desc w-50 text-start'>{`Take a look at these impressive testimonials from my satisfied clients who were highly impressed with the services I provided!`}</h5>
-            <div className='container px-5'>
+            <h5 ref={feedbackTitleRef} className='animate__animated mb-5 ps-4 service-desc w-50 text-start'>{`Take a look at these impressive testimonials from my satisfied clients who were highly impressed with the services I provided!`}</h5>
+            <div ref={feedbackSliderRef} className='animate__animated container px-5'>
                 <Slider {...settings}>
                     {slides.map((slide, index) => (
                         <div key={index} className='d-flex justify-content-center '>

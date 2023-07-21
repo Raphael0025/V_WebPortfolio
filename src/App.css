@@ -37,6 +37,7 @@
 body{
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 #root{
   width: 100%;
@@ -230,8 +231,7 @@ img{
   transition: all 0.3s ease-in-out;
 }
   .contact-btn:hover{
-    letter-spacing: 1rem;
-    transform: scale(1.05);
+    letter-spacing: 0.3rem;
     color: var(--charcoal);
     background-color: var(--off-white);
     border: 0.03em solid var(--charcoal);
@@ -241,6 +241,12 @@ img{
   color: var(--white);
   height: 4rem;
   background-color: var(--fade63-black);
+}
+.animate_drop{
+  animation: drop 3s ease-in-out alternate;
+}
+@keyframes drop{
+  0%{top: -10%}25%{top: 5%}50%{top: 5%}75%{top: 5%}100%{top: -10%}
 }
 @keyframes upDown {
   from{transform: translateY(0px);}to{transform: translateY(-10px);}

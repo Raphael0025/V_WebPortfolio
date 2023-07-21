@@ -57,7 +57,7 @@ function Projects() {
     return (
         <div id='project' className='d-flex flex-column align-items-start justify-content-center mt-5 p-5'>
             <Title title={'My Projects'}/>
-            <div className='container d-flex flex-wrap justify-content-between align-items-start flex-row m-0 p-0'>
+            <div className='d-flex flex-wrap justify-content-between align-items-start flex-row m-0 p-0'>
                 {projects.map((project, index) => (
                     <ProjectTile key={index} img={project.img} title={project.title} content={project.content} url={project.url} />
                 ))}
