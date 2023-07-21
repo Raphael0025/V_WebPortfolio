@@ -1,6 +1,6 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import 'animate.css'
-
+ 
 function ProjectTile({img, title, content, url}) {
     const projectRef = useRef(null);
 
@@ -26,8 +26,18 @@ function ProjectTile({img, title, content, url}) {
             projectObserver.disconnect();
         };
     });
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     return (
-        <div ref={projectRef} className='animate__animated project-container d-flex align-items-center justify-content-center px-4 pb-5 text-start'>
+        <div ref={projectRef} className={`animate__animated project-container d-flex align-items-center justify-content-center px-${isSmallScreen ? '0' : '4'} pb-5 text-start`}>
             <a href={url}>
                 <img src={img} className='rounded-4 proj-img mb-4' alt='project'/>
                 <h4 className='proj-head'>{title}</h4>

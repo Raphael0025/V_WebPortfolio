@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ProjectTile from '../Components/ProjectTile'
 import Title from '../Components/Title'
 
@@ -54,10 +54,20 @@ function Projects() {
             url: '',
         }
     ]
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     return (
-        <div id='project' className='d-flex flex-column align-items-start justify-content-center mt-5 p-5'>
+        <div id='project' className={`d-flex flex-column align-items-start justify-content-center mt-5 ${isSmallScreen ? 'p-4' : 'p-5'}`}>
             <Title title={'My Projects'}/>
-            <div className='d-flex flex-wrap justify-content-between align-items-start flex-row m-0 p-0'>
+            <div className={`d-flex flex-wrap justify-content-between align-items-${isSmallScreen ? 'center' : 'start'} flex-${isSmallScreen ? 'column mx-5' : 'row mx-0'} m-0 p-0`}>
                 {projects.map((project, index) => (
                     <ProjectTile key={index} img={project.img} title={project.title} content={project.content} url={project.url} />
                 ))}

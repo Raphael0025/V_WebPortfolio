@@ -198,12 +198,13 @@ img{
   height: 730px;
 }
 #contact-img{
-  width: 560px;
-  height: 100%;
   object-fit: cover;
 }
 .contact-header{
   font-weight: 900;
+}
+.contact_form{
+  backdrop-filter: blur(8px);
 }
 .icons{
   border-radius: 50px;

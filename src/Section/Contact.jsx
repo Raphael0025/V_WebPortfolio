@@ -14,7 +14,6 @@ function Contact() {
     const form = useRef();
     const [toastMessage, setToastMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
-    const contactImgRef = useRef(null);
     const contactFormRef = useRef(null);
 
     const intersectionObserverOptions = {
@@ -23,29 +22,20 @@ function Contact() {
     const intersectionObserverCallback = (entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                    contactImgRef.current.classList.remove('animate__fadeOut');
-                    contactImgRef.current.classList.add('animate__fadeIn');
                     contactFormRef.current.classList.remove('animate__fadeOut');
                     contactFormRef.current.classList.add('animate__fadeIn');
             } else {
-                    contactImgRef.current.classList.remove('animate__fadeIn');
-                    contactImgRef.current.classList.add('animate__fadeOut');
                     contactFormRef.current.classList.remove('animate__fadeIn');
                     contactFormRef.current.classList.add('animate__fadeOut');
             }
         });
     };
     useEffect(() => {
-        // Create Intersection Observer for Contact Image
-        const contactImgObserver = new IntersectionObserver(intersectionObserverCallback, intersectionObserverOptions);
-        contactImgObserver.observe(contactImgRef.current);
-    
         // Create Intersection Observer for Contact Form
         const contactFormObserver = new IntersectionObserver(intersectionObserverCallback, intersectionObserverOptions);
         contactFormObserver.observe(contactFormRef.current);
     
         return () => {
-            contactImgObserver.disconnect();
             contactFormObserver.disconnect();
         };
     });
@@ -77,13 +67,23 @@ function Contact() {
                 }, 3000); // Hide the toast after 1 second
             })
         e.target.reset()
-    };
+    }
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     return (
-        <div id='contact' className='p-5 d-flex justify-content-center align-items-center flex-row'>
-            <div className=' col-6 img-container-form'>
-                <img ref={contactImgRef} id='contact-img' src={pic1} alt='contact' className='animate__animated rounded-4' />
+        <div id='contact' ref={contactFormRef} className={`animate__animated p-5 d-flex justify-content-center align-items-center flex-${isSmallScreen ? 'column-reverse' : 'row'}`}>
+            <div className={`col-${isSmallScreen ? '12' : '6'} img-container-form z-1n`}>
+                <img id='contact-img' style={{zIndex: '0',width: isSmallScreen ? '100%' : '560px', height: '100%'}} src={pic1} alt='contact' className='rounded-4' />
             </div>
-            <div ref={contactFormRef} className='animate__animated col-6 rounded-4 p-3'>
+            <div style={{zIndex: '3'}} className={`col-${isSmallScreen ? '12' : '6'} contact_form rounded-4 ${isSmallScreen ? 'p-5 position-absolute' : 'p-3' } `}>
                 <div className='d-flex flex-column align-items-start text-start p-3 col-8'>
                     <h1 className='contact-header'>Collab with Me!</h1>
                     <figcaption className='fw-normal fs-5'>Reach out to me and let's discuss your project!</figcaption>
