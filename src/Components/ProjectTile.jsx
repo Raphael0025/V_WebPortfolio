@@ -37,11 +37,11 @@ function ProjectTile({img, title, content, url}) {
         return() => window.removeEventListener('resize', handleResize)
     },[])
     return (
-        <div ref={projectRef} className={`animate__animated project-container d-flex align-items-center justify-content-center px-${isSmallScreen ? '0' : '4'} pb-5 text-start`}>
-            <a href={url}>
+        <div ref={projectRef} className={`animate__animated project-container d-flex align-items-center justify-content-center px-${isSmallScreen ? '5 ' : '4'} pb-5 text-start`}>
+            <a href={url} className='d-flex flex-column '>
                 <img src={img} className='rounded-4 proj-img mb-4' alt='project'/>
                 <h4 className='proj-head'>{title}</h4>
-                <p className='fw-normal proj-desc'>{content}</p>
+                <p className='fw-normal proj-desc p-0'>{content}</p>
             </a>
         </div>
     )

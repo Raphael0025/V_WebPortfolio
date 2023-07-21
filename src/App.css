@@ -34,10 +34,12 @@
   --fade0-white: rgba(255, 255, 255, 0);
   --space-font: 'Space Grotesk', sans-serif;
 }
+html{
+  overflow-x: hidden;
+}
 body{
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 #root{
   width: 100%;
@@ -71,6 +73,9 @@ img{
 }
 #service, #feedback{
   background-color: var(--lighter-gray);
+}
+#home{
+  width: 100vw;
 }
 .service-desc{
   color: var(--fade63-black)
@@ -242,6 +247,12 @@ img{
 }
 .animate_drop{
   animation: drop 3s ease-in-out alternate;
+}
+@media all and (max-width: 576px){
+  .contact_form{
+    background: url('../src/assets/images/contacts.jpg');
+    color: var(--white);
+  }
 }
 @keyframes drop{
   0%{top: -10%}25%{top: 5%}50%{top: 5%}75%{top: 5%}100%{top: -10%}

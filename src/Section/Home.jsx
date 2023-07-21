@@ -37,6 +37,7 @@ function Home() {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth-400 < 576);
         }
+        console.log(window.innerWidth-400)
         handleResize()
         window.addEventListener('resize', handleResize)
 
@@ -44,7 +45,7 @@ function Home() {
     },[])
     return (
         <div id='home' className={`d-flex flex-${isSmallScreen ? 'column  px-2 mt-5' : 'row  px-5 h-100'} justify-content-center align-items-center pt-5`}>
-            <div ref={leftSiblingRef} className={`animate__animated col-${isSmallScreen ? '12 mt-5' : '6'} text-start ps-5`}>
+            <div ref={leftSiblingRef} className={`animate__animated col-${isSmallScreen ? '12 mt-5 ps-3' : '6 ps-5'} text-start`}>
                 <h5>Hello!</h5>
                 <h1 className='fw-bold mt-5'>I'm Jeselle, a Mobile and Web UI/UX Designer specializing in creating engaging digital experiences.</h1>
                 <p className='fw-light fs-6 pe-5'>I have a passion for combining aesthetics and usability to design intuitive and visually appealing interfaces. With a user-centered approach, I strive to deliver seamless and meaningful interactions. I'm excited to share my portfolio and collaborate on innovative design projects. Let's create something amazing together!</p>

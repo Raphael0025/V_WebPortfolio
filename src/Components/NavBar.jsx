@@ -1,15 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import logo from '../assets/images/JV Logo.png'
 
 function NavBar() {
     const [activeNavItem, setActiveNavItem] = useState('home');
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth-400 < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
 
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     const handleNavItemClick = (section) => {
         setActiveNavItem(section);
     };
     return (
-        <nav className='navbar fixed-top w-100 p-0 justify-content-center'>
-            <div className='p-0 m-0 container'>
+        <nav className='navbar fixed-top navbar-expand-lg py-0 bg-body-tertiary'>
+            <div className='container-fluid'>
                 <a className='navbar-brand ' href='#home'><img src={logo} alt='logo' /></a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

@@ -79,11 +79,11 @@ function Contact() {
         return() => window.removeEventListener('resize', handleResize)
     },[])
     return (
-        <div id='contact' ref={contactFormRef} className={`animate__animated p-5 d-flex justify-content-center align-items-center flex-${isSmallScreen ? 'column-reverse' : 'row'}`}>
-            <div className={`col-${isSmallScreen ? '12' : '6'} img-container-form z-1n`}>
-                <img id='contact-img' style={{zIndex: '0',width: isSmallScreen ? '100%' : '560px', height: '100%'}} src={pic1} alt='contact' className='rounded-4' />
+        <div id='contact' ref={contactFormRef} className={`animate__animated p-1 d-flex justify-content-center align-items-center flex-${isSmallScreen ? 'column-reverse' : 'row'}`}>
+            <div className={`col-${isSmallScreen ? '12 d-none' : '6'} img-container-form z-1n p-0`}>
+                <img id='contact-img' style={{width: isSmallScreen ? '100%' : '560px', height: '100%'}} src={pic1} alt='contact' className='rounded-4' />
             </div>
-            <div style={{zIndex: '3'}} className={`col-${isSmallScreen ? '12' : '6'} contact_form rounded-4 ${isSmallScreen ? 'p-5 position-absolute' : 'p-3' } `}>
+            <div className={`col-${isSmallScreen ? '12' : '6'} contact_form rounded-4 ${isSmallScreen ? 'p-2 my-5' : 'p-3' } `}>
                 <div className='d-flex flex-column align-items-start text-start p-3 col-8'>
                     <h1 className='contact-header' >Collab with Me!</h1>
                     <figcaption className='fw-normal fs-5'>Reach out to me and let's discuss your project!</figcaption>

@@ -12,12 +12,30 @@ function CardReview({ id, img, name, review }) {
     let content = expanded ? review.substring(0, charactersCount) : review
     useEffect(()=>{
         setIsTextOverflowing(review.length > charactersCount)
+    })
+
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth-400 < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
     },[])
 
     const toggleExpand = () => {
         setExpanded(!expanded);
-        const newWidth = expanded ? '850px' : '350px';
-        $(componentRef.current).animate({ width: newWidth }, 500);
+        if(isSmallScreen){
+            const newWidth = expanded ? '380px' : '350px'
+            const newHeight = expanded ? '650px' : '530px'
+            const newFontSize = expanded ? '0.7rem' : '1rem'
+            $(componentRef.current).animate({ width: newWidth, minHeight: newHeight, fontSize: newFontSize, }, 500);
+        } else {
+            const newWidth = expanded ? '850px' : '350px';
+            $(componentRef.current).animate({ width: newWidth }, 500);
+        }
     };
     return (
         <div id={id} ref={componentRef} className={`bg-light rounded-3 slide d-flex flex-column align-items-start text-start p-2 py-4 mx-4 my-2`} style={{ position: expanded ? 'relative' : 'absolute', zIndex: expanded ? 1 : 3, overflow: expanded ? '' : 'hidden' }}>
@@ -32,14 +50,9 @@ function CardReview({ id, img, name, review }) {
                     </div>
                 </div>
             </div>
-            <div className='review-text fw-normal' style={{ maxHeight: expanded ? '' : '450px', overflow: expanded ? '' : 'hidden' }} >
-                {content} {isTextOverflowing ? '...' : ''}
+            <div className='review-text fw-normal ' style={{ maxHeight: expanded ? '' : '450px', overflow: expanded ? '' : 'hidden' }} >
+                {content} {isTextOverflowing  && (<span onClick={toggleExpand}>{expanded ? '...See more' : '...See less'}</span>)}
             </div>
-            {isTextOverflowing &&( 
-                <div className="see-more-container mt-3 m-0 p-0 d-flex w-100 justify-content-end align-items-end">
-                    <button onClick={toggleExpand}>{expanded ? 'See more' : 'See less'}</button>
-                </div>
-            )}
         </div>
     )
 }

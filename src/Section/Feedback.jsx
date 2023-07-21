@@ -19,7 +19,7 @@ function Feedback() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 576);
+            setIsSmallScreen(window.innerWidth-400 < 576);
         }
         window.addEventListener('resize', handleResize)
         handleResize()
@@ -63,14 +63,23 @@ function Feedback() {
             feedbackSliderObserver.disconnect();
         };
     });
-
+    const calculateSlidesToShow = () => {
+        const screenWidth = window.innerWidth-400;
+        if (screenWidth <= 576) {
+            return 1;
+        } else if (screenWidth <= 1200) {
+            return 2;
+        } else {
+            return 3;
+        }
+    };
     const settings = {
         dots: true, 
         infinite: true,
         speed: 500,
         centerMode: true,
         arrows: true,
-        slidesToShow: 3,
+        slidesToShow: calculateSlidesToShow(),
         slidesToScroll: 1,
     };
     const slides = [
@@ -106,10 +115,10 @@ function Feedback() {
         },
     ]
     return (
-        <div id='feedback' className='d-flex flex-column align-items-start justify-content-center p-5 mt-5'>
+        <div id='feedback' className={`d-flex flex-column align-items-start justify-content-center p-${isSmallScreen ? '1' : '5'} my-5`}>
             <Title title={'Feedback'}/>
-            <h5 ref={feedbackTitleRef} className='animate__animated mb-5 ps-4 service-desc w-50 text-start'>{`Take a look at these impressive testimonials from my satisfied clients who were highly impressed with the services I provided!`}</h5>
-            <div ref={feedbackSliderRef} className='animate__animated container px-5'>
+            <h5 ref={feedbackTitleRef} className={`animate__animated ps-4 service-desc w-${isSmallScreen ? '100 mb-1' : '50 mb-5'} text-start`}>{`Take a look at these impressive testimonials from my satisfied clients who were highly impressed with the services I provided!`}</h5>
+            <div ref={feedbackSliderRef} className={`animate__animated container px-${isSmallScreen ? '0' : '5'}`}>
                 <Slider {...settings}>
                     {slides.map((slide, index) => (
                         <div key={index} className='d-flex justify-content-center '>
