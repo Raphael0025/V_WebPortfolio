@@ -67,8 +67,6 @@ function Feedback() {
         const screenWidth = window.innerWidth-400;
         if (screenWidth <= 576) {
             return 1;
-        } else if (screenWidth <= 1200) {
-            return 2;
         } else {
             return 3;
         }

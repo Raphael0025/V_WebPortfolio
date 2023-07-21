@@ -44,7 +44,7 @@ function Home() {
         return() => {window.removeEventListener('resize', handleResize)}
     },[])
     return (
-        <div id='home' className={`d-flex flex-${isSmallScreen ? 'column  px-2 mt-5' : 'row  px-5 h-100'} justify-content-center align-items-center pt-5`}>
+        <div id='home' className={`d-flex flex-${isSmallScreen ? 'column  px-2' : 'row  px-5 h-100'} justify-content-center align-items-center pt-5`}>
             <div ref={leftSiblingRef} className={`animate__animated col-${isSmallScreen ? '12 mt-5 ps-3' : '6 ps-5'} text-start`}>
                 <h5>Hello!</h5>
                 <h1 className='fw-bold mt-5'>I'm Jeselle, a Mobile and Web UI/UX Designer specializing in creating engaging digital experiences.</h1>
