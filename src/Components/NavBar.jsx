@@ -8,7 +8,7 @@ function NavBar() {
         setActiveNavItem(section);
     };
     return (
-        <nav className='navbar fixed-top navbar-expand-sm p-0 justify-content-center'>
+        <nav className='navbar fixed-top navbar-expand-lg  p-0 justify-content-center'>
             <div className='p-0 m-0 container'>
                 <a className='navbar-brand ' href='#home'><img src={logo} alt='logo' /></a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
