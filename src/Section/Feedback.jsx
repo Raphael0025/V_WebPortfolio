@@ -19,7 +19,7 @@ function Feedback() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 500);
+            setIsSmallScreen(window.innerWidth < 576);
         }
         window.addEventListener('resize', handleResize)
         handleResize()

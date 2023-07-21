@@ -71,7 +71,7 @@ function Contact() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 500);
+            setIsSmallScreen(window.innerWidth < 576);
         }
         window.addEventListener('resize', handleResize)
         handleResize()
@@ -85,7 +85,7 @@ function Contact() {
             </div>
             <div style={{zIndex: '3'}} className={`col-${isSmallScreen ? '12' : '6'} contact_form rounded-4 ${isSmallScreen ? 'p-5 position-absolute' : 'p-3' } `}>
                 <div className='d-flex flex-column align-items-start text-start p-3 col-8'>
-                    <h1 className='contact-header'>Collab with Me!</h1>
+                    <h1 className='contact-header' >Collab with Me!</h1>
                     <figcaption className='fw-normal fs-5'>Reach out to me and let's discuss your project!</figcaption>
                     <div className='d-flex justify-content-center align-items-start gap-4 py-3'>
                         <a href='https://www.facebook.com/jeselle.victoria.1' className='icons p-2 me-3'><BiLogoFacebook size={28} /></a>

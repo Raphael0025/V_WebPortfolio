@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect, useState, useRef, useLayoutEffect} from 'react'
 import pic from '../assets/images/profile pic.jpg' 
 import 'animate.css'
 
@@ -33,12 +33,12 @@ function Home() {
         };
     });
     const [isSmallScreen, setIsSmallScreen] = useState(false);
-    useEffect(() => {
+    useLayoutEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 412);
+            setIsSmallScreen(window.innerWidth < 576);
         }
-        window.addEventListener('resize', handleResize)
         handleResize()
+        window.addEventListener('resize', handleResize)
 
         return() => window.removeEventListener('resize', handleResize)
     },[])
