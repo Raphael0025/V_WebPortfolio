@@ -117,7 +117,7 @@ function Feedback() {
     return (
         <div id='feedback' className={`d-flex flex-column align-items-start justify-content-center p-${isSmallScreen ? '1' : '5'} my-5`}>
             <Title title={'Feedback'}/>
-            <h5 ref={feedbackTitleRef} className={`animate__animated ps-4 service-desc w-${isSmallScreen ? '100 mb-1' : '50 mb-5'} text-start`}>{`Take a look at these impressive testimonials from my satisfied clients who were highly impressed with the services I provided!`}</h5>
+            <h5 ref={feedbackTitleRef} className={`animate__animated ps-4 service-desc w-${isSmallScreen ? '75 mb-2' : '50 mb-5'} text-start`}>{`Take a look at these impressive testimonials from my satisfied clients who were highly impressed with the services I provided!`}</h5>
             <div ref={feedbackSliderRef} className={`animate__animated container px-${isSmallScreen ? '0' : '5'}`}>
                 <Slider {...settings}>
                     {slides.map((slide, index) => (
