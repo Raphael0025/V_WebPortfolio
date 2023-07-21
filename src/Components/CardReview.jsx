@@ -30,7 +30,7 @@ function CardReview({ id, img, name, review }) {
         if(isSmallScreen){
             const newWidth = expanded ? '380px' : '350px'
             const newHeight = expanded ? '650px' : '530px'
-            const newFontSize = expanded ? '0.7rem' : '1rem'
+            const newFontSize = expanded ? '0.6rem' : '0.8rem'
             $(componentRef.current).animate({ width: newWidth, minHeight: newHeight, fontSize: newFontSize, }, 500);
         } else {
             const newWidth = expanded ? '850px' : '350px';
