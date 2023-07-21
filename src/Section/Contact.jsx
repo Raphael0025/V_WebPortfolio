@@ -71,7 +71,7 @@ function Contact() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 576);
+            setIsSmallScreen(window.innerWidth-400 < 576);
         }
         window.addEventListener('resize', handleResize)
         handleResize()

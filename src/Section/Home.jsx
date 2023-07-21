@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, useLayoutEffect} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import pic from '../assets/images/profile pic.jpg' 
 import 'animate.css'
 
@@ -33,14 +33,14 @@ function Home() {
         };
     });
     const [isSmallScreen, setIsSmallScreen] = useState(false);
-    useLayoutEffect(() => {
+    useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 576);
+            setIsSmallScreen(window.innerWidth-400 < 576);
         }
         handleResize()
         window.addEventListener('resize', handleResize)
 
-        return() => window.removeEventListener('resize', handleResize)
+        return() => {window.removeEventListener('resize', handleResize)}
     },[])
     return (
         <div id='home' className={`d-flex flex-${isSmallScreen ? 'column  px-2 mt-5' : 'row  px-5 h-100'} justify-content-center align-items-center pt-5`}>

@@ -57,7 +57,7 @@ function Projects() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 576);
+            setIsSmallScreen(window.innerWidth-400 < 576);
         }
         window.addEventListener('resize', handleResize)
         handleResize()
@@ -67,7 +67,7 @@ function Projects() {
     return (
         <div id='project' className={`d-flex flex-column align-items-start justify-content-center mt-5 ${isSmallScreen ? 'p-4' : 'p-5'}`}>
             <Title title={'My Projects'}/>
-            <div className={`d-flex flex-wrap justify-content-between align-items-${isSmallScreen ? 'center' : 'start'} flex-${isSmallScreen ? 'column mx-5' : 'row mx-0'} m-0 p-0`}>
+            <div className={`d-flex flex-wrap justify-content-center align-items-${isSmallScreen ? 'center w-100' : 'start'} flex-${isSmallScreen ? 'column' : 'row mx-0'} m-0 p-0`}>
                 {projects.map((project, index) => (
                     <ProjectTile key={index} img={project.img} title={project.title} content={project.content} url={project.url} />
                 ))}
