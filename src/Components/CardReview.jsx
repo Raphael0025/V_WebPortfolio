@@ -6,7 +6,7 @@ function CardReview({ id, img, name, review }) {
     const [isTextOverflowing, setIsTextOverflowing] = useState(false);
     const [expanded, setExpanded] = useState(true);
     const componentRef = useRef(null);
-    const charactersCount = useState(350);
+    const [charactersCount] = useState(350);
     
 
     let content = expanded ? review.substring(0, charactersCount) : review
