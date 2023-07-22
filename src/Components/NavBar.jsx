@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import logo from '../assets/images/JV Logo.png'
 
 function NavBar() {
     const [activeNavItem, setActiveNavItem] = useState('home');
-    const [isSmallScreen, setIsSmallScreen] = useState(false);
     const handleNavItemClick = (section) => {
         setActiveNavItem(section);
     };
