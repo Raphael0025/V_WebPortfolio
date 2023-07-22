@@ -110,7 +110,7 @@ function Contact() {
                 </form>
             </div>
             {showToast && (
-            <div className="toast show fw-medium animate_drop" role="alert" aria-live="assertive" aria-atomic="true" style={{ position: 'fixed', top: '5%', zIndex:'9999', 'background-color': 'var(--darker-gray)' }} >
+            <div className="toast show fw-medium animate_drop" role="alert" aria-live="assertive" aria-atomic="true" style={{ position: 'fixed', top: '5%', zIndex:'9999', 'background-color': 'var(--darker-gray)', color: 'var(--white)' }} >
                 <div className="toast-body">{toastMessage}</div>
             </div>
             )}

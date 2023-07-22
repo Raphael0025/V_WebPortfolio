@@ -4,20 +4,11 @@ import logo from '../assets/images/JV Logo.png'
 function NavBar() {
     const [activeNavItem, setActiveNavItem] = useState('home');
     const [isSmallScreen, setIsSmallScreen] = useState(false);
-    useEffect(() => {
-        const handleResize = () => {
-            setIsSmallScreen(window.innerWidth-400 < 576);
-        }
-        window.addEventListener('resize', handleResize)
-        handleResize()
-
-        return() => window.removeEventListener('resize', handleResize)
-    },[])
     const handleNavItemClick = (section) => {
         setActiveNavItem(section);
     };
     return (
-        <nav className='navbar fixed-top navbar-expand-lg py-0 bg-body-tertiary'>
+        <nav className='navbar fixed-top navbar-expand-lg py-0 bg-body-tertiary z-1'>
             <div className='container-fluid'>
                 <a className='navbar-brand ' href='#home'><img src={logo} alt='logo' /></a>
                 <button className="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

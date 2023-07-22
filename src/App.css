@@ -253,7 +253,7 @@ img{
   }
 }
 @keyframes drop{
-  0%{top: -10%}25%{top: 5%}50%{top: 5%}75%{top: 5%}100%{top: -10%}
+  0%{top: -10%}25%{top: 10%}50%{top: 10%}75%{top: 10%}100%{top: -10%}
 }
 @keyframes upDown {
   from{transform: translateY(0px);}to{transform: translateY(-10px);}
