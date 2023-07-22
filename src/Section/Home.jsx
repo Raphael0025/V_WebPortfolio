@@ -46,8 +46,8 @@ function Home() {
     return (
         <div id='home' className={`d-flex flex-${isSmallScreen ? 'column  px-2' : 'row  px-5 h-100'} justify-content-center align-items-center pt-5`}>
             <div ref={leftSiblingRef} className={`animate__animated col-${isSmallScreen ? '12 mt-5 ps-3' : '6 ps-5'} text-start`}>
-                <h5>Hello!</h5>
-                <h1 className='fw-bold mt-5'>I'm Jeselle, a Mobile and Web UI/UX Designer specializing in creating engaging digital experiences.</h1>
+                <h5 className={`${isSmallScreen ? 'pt-4' : 'pt-0'}`}>Hello!{isSmallScreen && (<span>👋</span>)}</h5>
+                <h1 className={`fw-bold mt-${isSmallScreen ? '3' : '5'}`}>I'm Jeselle, a Mobile and Web UI/UX Designer specializing in creating engaging digital experiences.</h1>
                 <p className='fw-light fs-6 pe-5'>I have a passion for combining aesthetics and usability to design intuitive and visually appealing interfaces. With a user-centered approach, I strive to deliver seamless and meaningful interactions. I'm excited to share my portfolio and collaborate on innovative design projects. Let's create something amazing together!</p>
                 <div className={`d-flex justify-content-${isSmallScreen ? 'start gap-4' : 'evenly' } align-items-start ${isSmallScreen ? 'w-100' : 'w-50'} mt-5`}>
                     <button className='jv-btn px-4 py-2 rounded-3 fs-5 fw-medium'>About Me</button>

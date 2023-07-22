@@ -46,12 +46,12 @@ function Contact() {
         e.preventDefault();
         const clientEmail = formData.email;
         const templateParams = {
-            to_email: 'rpbisla0025@gmail.com', // Replace with your email address
+            to_email: 'isengvictoria19@gmail.com', // Replace with your email address
             from_email: clientEmail,
             name: formData.name,
             message: formData.message,
         };
-        emailjs.send('service_0gh9hj4', 'template_j22od16', templateParams, '7WhHrpm5BgAiRtffK')
+        emailjs.send('service_qgm5zev', 'template_svb8r3m', templateParams, 'czBrrkwuIpofrNnSS')
             .then((result) => {
                 setToastMessage('Message Sent Successfully to Developer!');
                 setShowToast(true);
