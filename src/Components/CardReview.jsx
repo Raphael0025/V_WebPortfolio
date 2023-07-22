@@ -51,7 +51,7 @@ function CardReview({ id, img, name, review }) {
                 </div>
             </div>
             <div className='review-text fw-normal ' style={{ maxHeight: expanded ? '' : '450px', overflow: expanded ? '' : 'hidden' }} >
-                {content} {isTextOverflowing  && (<span onClick={toggleExpand}>{expanded ? '...See more' : '...See less'}</span>)}
+                {content} {isTextOverflowing  && (<span onClick={toggleExpand} style={{cursor: 'pointer'}}>{expanded ? '...See more' : '...See less'}</span>)}
             </div>
         </div>
     )
