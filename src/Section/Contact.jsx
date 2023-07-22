@@ -88,10 +88,10 @@ function Contact() {
                     <h1 className='contact-header' >Collab with Me!</h1>
                     <figcaption className='fw-normal fs-5'>Reach out to me and let's discuss your project!</figcaption>
                     <div className='d-flex justify-content-center align-items-start gap-4 py-3'>
-                        <a href='https://www.facebook.com/jeselle.victoria.1' className='icons p-2 me-3'><BiLogoFacebook size={28} /></a>
-                        <a href='https://m.me/jeselle.victoria.1' className='icons p-2 me-3'><BsMessenger size={28} /></a>
-                        <a href='https://www.instagram.com/jsllrs_iseng/' className='icons p-2 me-3'><BsInstagram size={28} /></a>
-                        <a href='https://www.linkedin.com/in/iseng-victoria-974780284/' className='icons p-2 me-3'><BiLogoLinkedin size={28} /></a>
+                        <a target='_blank' rel='noopener noreferrer' href='https://www.facebook.com/jeselle.victoria.1' className='icons p-2 me-3'><BiLogoFacebook size={28} /></a>
+                        <a target='_blank' rel='noopener noreferrer' href='https://m.me/jeselle.victoria.1' className='icons p-2 me-3'><BsMessenger size={28} /></a>
+                        <a target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/jsllrs_iseng/' className='icons p-2 me-3'><BsInstagram size={28} /></a>
+                        <a target='_blank' rel='noopener noreferrer' href='https://www.linkedin.com/in/iseng-victoria-974780284/' className='icons p-2 me-3'><BiLogoLinkedin size={28} /></a>
                     </div>
                 </div>
                 <form ref={form} onSubmit={sendEmail} className='row g-2 p-3'>
